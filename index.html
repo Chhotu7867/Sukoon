@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Request</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Hi, mera naam Chhotu Bhardwaj hai.<br>Kya tum meri friend bna chahogi?</h2>
+    <button onclick="sendResponse('Haa')">Haa</button>
+    <button onclick="sendResponse('Naa')">Naa</button>
+
+    <script>
+        async function sendResponse(answer) {
+            const response = await fetch("/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ reply: answer })
+            });
+            const data = await response.text();
+            alert(data);
+        }
+    </script>
+</body>
+</html>
